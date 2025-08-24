@@ -4,14 +4,36 @@ services:
     env: docker
     plan: free
     autoDeploy: true
+    dockerfilePath: ./Dockerfile
     envVars:
-      - key: N8N_PORT
-        value: ${PORT}
+      # n8n 运行配置
       - key: N8N_HOST
-        value: your-n8n-app.onrender.com   # 这里改成你的 Render 域名
+        value: n8n-33tp.onrender.com
       - key: N8N_PROTOCOL
         value: https
       - key: WEBHOOK_URL
-        value: https://your-n8n-app.onrender.com/   # 改成你的域名
+        value: https://n8n-33tp.onrender.com/
       - key: GENERIC_TIMEZONE
-        value: Asia/Shanghai   # 你在国内可以设置上海时区
+        value: Asia/Shanghai
+      
+      # Supabase 数据库配置
+      - key: DB_TYPE
+        value: postgres
+      - key: DB_POSTGRESDB_HOST
+        value: eiyaloehytwaralfqsrk.supabase.co
+      - key: DB_POSTGRESDB_PORT
+        value: 5432
+      - key: DB_POSTGRESDB_DATABASE
+        value: postgres
+      - key: DB_POSTGRESDB_USER
+        value: postgres
+      - key: DB_POSTGRESDB_PASSWORD
+        value: 310107200710234434
+
+      # 选填：如果你想通过 Supabase API 访问
+      - key: SUPABASE_URL
+        value: https://eiyaloehytwaralfqsrk.supabase.co
+      - key: SUPABASE_ANON_KEY
+        value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVpeWFsb2VoeXR3YXJhbGZxc3JrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUxMzk1MzYsImV4cCI6MjA3MDcxNTUzNn0.t6E4Ps8qRsukYJUFUJ7ZTuc3nmn0SeKlSFIUi2QcVKk
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVpeWFsb2VoeXR3YXJhbGZxc3JrIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1NTEzOTUzNiwiZXhwIjoyMDcwNzE1NTM2fQ.YmGN8CDQ3SImzaeSegJspIuqJTohCT-aHXn6mAEEd38
