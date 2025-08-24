@@ -3,23 +3,15 @@ services:
     name: n8n
     env: docker
     plan: free
-    region: singapore
-    branch: main
-    dockerfilePath: ./Dockerfile
+    autoDeploy: true
     envVars:
-      - key: N8N_BASIC_AUTH_ACTIVE
-        value: "true"
-      - key: N8N_BASIC_AUTH_USER
-        value: "admin"
-      - key: N8N_BASIC_AUTH_PASSWORD
-        value: "yourpassword"
-      - key: N8N_HOST
-        value: "aimr-prs8.onrender.com"
       - key: N8N_PORT
-        value: "5678"
+        value: ${PORT}
+      - key: N8N_HOST
+        value: your-n8n-app.onrender.com   # 这里改成你的 Render 域名
       - key: N8N_PROTOCOL
-        value: "https"
-      - key: SUPABASE_URL
-        value: "https://eiyaloehytwaralfqsrk.supabase.co"
-      - key: SUPABASE_KEY
-        value: "your-supabase-service-role-key"
+        value: https
+      - key: WEBHOOK_URL
+        value: https://your-n8n-app.onrender.com/   # 改成你的域名
+      - key: GENERIC_TIMEZONE
+        value: Asia/Shanghai   # 你在国内可以设置上海时区
